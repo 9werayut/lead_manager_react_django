@@ -9,11 +9,11 @@ class LeadViewSet(viewsets.ModelViewSet):
     # queryset = Lead.objects.all()
     permission_classes = [
         # permissions.AllowAny
-        permissions.IsAuthenticated
+        permissions.IsAuthenticated,
     ]
     serializer_class = LeadSerializer
 
-    def queryset(self):
+    def get_queryset(self):
         return self.request.user.leads.all()
 
     def perform_create(self, serializer):
